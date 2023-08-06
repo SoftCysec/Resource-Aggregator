@@ -1,0 +1,41 @@
+@model IEnumerable<ResourceAggregator.Models.Resource>
+
+<h2>Resource List</h2>
+
+@if (!Model.Any())
+{
+    <p>No resources found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var resource in Model)
+            {
+                <tr>
+                    <td>@resource.Title</td>
+                    <td>@resource.Description</td>
+                    <td><a href="@resource.Url" target="_blank">@resource.Url</a></td>
+                    <td>@resource.Category.Name</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@resource.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@resource.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a asp-action="Create">Add New Resource</a>
+</p>

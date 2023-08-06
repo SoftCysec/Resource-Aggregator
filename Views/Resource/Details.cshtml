@@ -1,0 +1,16 @@
+@model ResourceAggregator.Models.Resource
+
+<h2>Resource Details</h2>
+
+<div>
+    <h4>Title: @Model.Title</h4>
+    <p>Description: @Model.Description</p>
+    <p>URL: <a href="@Model.Url" target="_blank">@Model.Url</a></p>
+    <p>Category: @Model.Category.Name</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
